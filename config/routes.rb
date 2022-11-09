@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :members
+  devise_for :members, controllers: {
+  sessions: 'public/members/sessions',
+  registrations: 'public/members/registrations'
+
+}
+
+
 
 
   #会員側
