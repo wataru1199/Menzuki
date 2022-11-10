@@ -4,6 +4,7 @@ class Public::HomesController < ApplicationController
    layout'public'
 
   def top
+    @categories= Category.all
   end
 
   def about
