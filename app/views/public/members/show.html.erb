@@ -1,0 +1,50 @@
+<!--ログインユーザの場合-->
+<% if @member.id == current_member.id %>
+ <h2>マイページ</h2>
+ <div class= "container">
+  <div class= "row">
+    <div class= "col-4">
+      <div>
+       <%= image_tag @member.profile_image %>
+      </div>
+      <p>
+       <%= current_member.name %>
+       <%= current_member.email %>
+       <%= current_member.introduction %>
+      </p>
+      <%= link_to "編集する",edit_member_path(current_member.id) %>
+    </div>
+<!--ログインユーザ以外の場合-->
+<% else %>
+       <%= @member.name さんの詳細ページ %>
+     <div class= "col-4">
+       <%= image_tag @member.profile_image %>
+      <p>
+       <%= @member.name %>
+       <%= @member.email %>
+       <%= @member.introduction %>
+      </p>
+    </div>
+<% end %>
+
+    <div class= "col-8">
+     <% @reviews.each do |review| %>
+      <tr>
+       <td>
+         <div>
+          <%= image_tag review.get_image(100,100) %>
+         </div>
+         <div>
+          店名:   <%= review.shop_name %><br>
+          場所:   <%= review.place %><br>
+          カテゴリ: <%= review.category.category_name %><br>
+          投稿者: <%= review.member.name %><br>
+          レビュー: <%= review.review_cont %><br>
+          投稿日時: <%= review.created_at.strftime('%Y/%m/%d') %>
+         </div>
+       </td>
+      </tr>
+     <% end %>
+    </div>
+  </div>
+</div>

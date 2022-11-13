@@ -53,7 +53,8 @@ ActiveRecord::Schema.define(version: 2022_11_07_015940) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "category_name"
+    t.string "category_name", null: false
+    t.integer "order_number", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,10 +97,10 @@ ActiveRecord::Schema.define(version: 2022_11_07_015940) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "category_id"
-    t.string "shop_name"
-    t.string "place"
+    t.integer "member_id", null: false
+    t.integer "category_id", null: false
+    t.string "shop_name", null: false
+    t.string "place", null: false
     t.text "review_cont"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
