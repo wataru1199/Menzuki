@@ -18,10 +18,10 @@ Rails.application.routes.draw do
     get 'about' => "homes#about"
     resources :categories, only: [:index, :new, :create, :edit, :update]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
-    resources :relations, only: [:create, :delete]
-    resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :delete] do
-      resources :comments, only: [:index, :new, :create, :edit, :update, :delete]
-      resource :favorites, only: [:create, :delete]
+    resources :relations, only: [:create, :destroy]
+    resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 
@@ -33,10 +33,10 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     resources :categories, only: [:index, :new, :create, :edit, :update]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
-    resources :relations, only: [:create, :delete]
-    resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :delete] do
-      resources :comments, only: [:index, :new, :create, :edit, :update, :delete]
-      resource :favorites, only: [:create, :delete]
+    resources :relations, only: [:create, :destroy]
+    resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
    layout'public'
 
   def top
-    @categories= Category.all
+    @categories= Category.all.order("order_number")
   end
 
   def about
