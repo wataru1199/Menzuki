@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  layout "public"
+
 
   def show
     @member= Member.find(params[:id])

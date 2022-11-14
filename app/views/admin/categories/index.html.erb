@@ -1,0 +1,30 @@
+
+
+
+<div class= "container">
+  <div class= "row">
+   <div class= "col- mx-auto">
+    <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+    <%= f.text_field :category_name %>
+    <%= f.submit 'カテゴリの追加' %>
+    <% end %>
+   </div>
+  </div>
+  <div class= "row">
+    <div class= "col-8 mx-auto">
+     <% @categories.each do |category| %>
+       <div class="index-box border my-2">
+         <div class="index-field d-flex justify-content-left mr-5">
+           <div>
+             カテゴリ名: <%= category.category_name %>
+           </div>
+          <div class= "ml-5">
+           <%= link_to "編集",edit_admin_category_path(category.id) %>
+           <%= link_to "削除",admin_category_path(category.id),method: :delete, "data-confirm" => "Are you sure?" %>
+          </div>
+         </div>
+       </div>
+     <% end %>
+    </div>
+  </div>
+</div>

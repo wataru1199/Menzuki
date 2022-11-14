@@ -1,0 +1,46 @@
+  <%= flash[:success] %>
+<div class="container">
+  <div class= "row">
+    <div class= "col-6">
+      <%= @member.name %>さんのプロフィール<br>
+      <div class="index-box border my-2">
+         <div class="index-field mr-5">
+           　<%= image_tag @member.get_profile_image(100,100) %>
+             登録日時:   <%= @member.created_at.strftime('%Y/%m/%d') %><br>
+             ユーザ名:   <%= @member.name %><br>
+             紹介文:   <%= @member.introduction %><br>
+            <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, '退会' %>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, '有効' %>
+            <div class= "field">
+              <%= f.submit '退会', class:"btn btn-success" %>
+            </div>
+            <% end %>
+         </div>
+       </div>
+    </div>
+    <div class= "col-6">
+      <%= @member.name  %>さんの投稿
+      <div class="index-box border my-2">
+         <div class="index-field d-flex justify-content-left mr-5">
+          <% @reviews.each do |review| %>
+          <div class= "lists border">
+           <div>
+            <%= image_tag review.get_image(100,100) %>
+           </div>
+           <div>
+            店名:   <%= review.shop_name %>
+            場所:   <%= review.place %>
+            カテゴリ: <%= review.category.category_name %>
+           </div>
+            いいね
+            コメントー件
+            <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+          <% end %>
+         </div>
+       </div>
+    </div>
+  </div>
+</div>

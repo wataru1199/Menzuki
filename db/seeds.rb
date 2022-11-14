@@ -27,6 +27,10 @@ Category.create!(
       order_number: 0,
     },
         {
+      category_name: "パスタ",
+      order_number: 0,
+    },
+        {
       category_name: "その他",
       order_number: 1,
     }   ]
@@ -64,7 +68,7 @@ Category.create!(
       shop_name: "神楽",
       place: "鳥取",
       review_cont: "おいしい！",
-    },  
+    },
         {
       member_id: "1",
       category_id: "3",
@@ -84,7 +88,7 @@ Category.create!(
 
  Admin.create!(
    [    {
-      email: "admin@.co.jp",
+      email: "admin@co.jp",
       password: "666666",
     }   ]
  )

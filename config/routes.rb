@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   #URLにadminを追加し参照をcontroller/adminにする
   namespace :admin do
 
-    root :to => 'homes#top'
-    resources :categories, only: [:index, :new, :create, :edit, :update]
+    root :to => 'admin/reviews#index'
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
     resources :relations, only: [:create, :destroy]
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
