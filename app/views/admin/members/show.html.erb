@@ -35,7 +35,7 @@
             場所:   <%= review.place %>
             カテゴリ: <%= review.category.category_name %>
            </div>
-            いいね
+            <%= review.favorites.count %> いいね
             コメントー件
             <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
           <% end %>

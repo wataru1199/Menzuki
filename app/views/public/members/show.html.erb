@@ -41,6 +41,7 @@
           投稿者: <%= review.member.name %><br>
           レビュー: <%= review.review_cont %><br>
           投稿日時: <%= review.created_at.strftime('%Y/%m/%d') %>
+          <%= review.favorites.count %> いいね
          </div>
        </td>
       </tr>

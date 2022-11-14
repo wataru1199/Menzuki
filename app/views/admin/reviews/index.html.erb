@@ -12,6 +12,9 @@
          <div class="index-field">
            投稿店名: <%= link_to review.shop_name, admin_review_path(review.id) %>
          </div>
+         <div class="index-field">
+           <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+         </div>
        </div>
      <% end %>
     </div>
