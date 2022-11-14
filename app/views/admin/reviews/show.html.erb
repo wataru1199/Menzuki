@@ -1,0 +1,19 @@
+<h2>投稿詳細</h2>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-6">
+     <%= image_tag @review.get_image(100,100) %>
+     <p>
+      店名:   <%= @review.shop_name %><br>
+      場所:   <%= @review.place %><br>
+      カテゴリ: <%= @review.category.category_name %><br>
+      投稿者: <%= @review.member.name %><br>
+      レビュー: <%= @review.review_cont %><br>
+      投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
+      <%= @review.favorites.count %> いいね 
+     </p>
+     <%= link_to "Destroy",review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+     <%= link_to "Edit",edit_review_path(@review.id) %>
+    </div>
+  </div>
+</div>

@@ -14,4 +14,8 @@ class Review < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
 
+def favorited_by?(member)
+ favorites.exists?(member_id: member.id)
+end
+
 end
