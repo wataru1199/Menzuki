@@ -1,6 +1,5 @@
 class Public::ReviewsController < ApplicationController
 
-layout "public"
 
   def new
     @review= Review.new
@@ -27,7 +26,7 @@ layout "public"
     @review= Review.find(params[:id])
     if @review.destroy
       @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
-      redirect_to :reviews_path
+      redirect_to reviews_path
     end
   end
 

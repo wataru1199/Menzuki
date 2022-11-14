@@ -1,0 +1,20 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-10 mx-auto">
+     <% @members.each do |member| %>
+       <div class="index-box border my-2">
+         <div class="index-field d-flex justify-content-left mr-5">
+             登録日時:   <%= member.created_at.strftime('%Y/%m/%d') %>
+             ユーザ名:   <%= link_to member.name, admin_member_path(member.id) %>
+             登録ステータス: 
+             <% if member.is_deleted == false %>
+              有効
+             <% else %>
+              退会
+             <% end %>
+         </div>
+       </div>
+     <% end %>
+    </div>
+  </div>
+</div>

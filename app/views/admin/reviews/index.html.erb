@@ -1,0 +1,19 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col text">
+     <% @reviews.each do |review| %>
+       <div class="index-box d-flex justify-content-center border my-2">
+         <div class="index-field mr-5">
+           投稿日時: <%= review.created_at.strftime('%Y/%m/%d') %>
+         </div>
+         <div class="index-field mr-5">
+           投稿者: <%= link_to review.member.name, admin_member_path(review.member.id) %>
+         </div>
+         <div class="index-field">
+           投稿店名: <%= link_to review.shop_name, admin_review_path(review.id) %>
+         </div>
+       </div>
+     <% end %>
+    </div>
+  </div>
+</div>

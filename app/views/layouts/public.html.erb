@@ -60,6 +60,31 @@
                    ログアウト
                   <% end %>
                 </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to admin_reviews_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-gifts"></i>
+                   投稿一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_members_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-users"></i>
+                  会員一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_categories_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-birthday-cake"></i>
+                  カテゴリ一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
+                  <i class="fas fa-sign-out-alt"></i>
+                  ログアウト
+                  <% end %>
+                </li>
               <% else %>
                 <li>
                   <%= link_to about_path, class: "nav-link text-dark" do %>
