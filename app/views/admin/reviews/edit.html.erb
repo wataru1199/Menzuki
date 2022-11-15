@@ -2,7 +2,7 @@
   <div class= "row">
    <div class= "col">
     <h2>投稿編集</h2>
-    <%= form_with model: @review do |f| %>
+    <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
     <div class="field" >
     <%= image_tag @review.get_image(100,100) %>
     <%= f.file_field :image, accept: "image/*" %>

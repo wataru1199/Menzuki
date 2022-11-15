@@ -6,12 +6,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
+    #レビューの新規投稿
     review= Review.new(review_params)
     if review.save
       redirect_to reviews_path
     else
       render :new
     end
+
   end
 
   def index
@@ -20,6 +22,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review= Review.find(params[:id])
+    @comment = Comment.new 
   end
 
   def destroy
