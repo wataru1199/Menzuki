@@ -1,12 +1,7 @@
-<h2>投稿詳細</h2>
 <div class= "container">
   <div class= "row">
     <div class= "col-4">
-     <%= image_tag current_member.get_profile_image(100,100), class:"mt-3 rounded-circle"; %><br>
-     <%= current_member.name %><br>
-     <%= link_to member_path(current_member.id) do %>
-      <i class="fas fa-cog"></i>
-     <% end %>
+     <%= render 'profile' %> <!--プロフィールテンプレ-->
     </div>
     <div class= "col-6">
      <%= image_tag @review.get_image(100,100) %>
@@ -17,39 +12,13 @@
       投稿者: <%= @review.member.name %><br>
       レビュー: <%= @review.review_cont %><br>
       投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
-      <% if @review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
-        <p>
-         <%= link_to review_favorites_path(@review), method: :delete do %>
-          ♥<%= @review.favorites.count %> いいね
-         <% end %>
-        </p>
-         <% else %>
-        <p>
-         <%= link_to review_favorites_path(@review), method: :post do %>
-             ♡<%= @review.favorites.count %> いいね
-         <% end %>
-        </p>
-      <% end %>
      </p>
      <% if @review.member == current_member %>
      <%= link_to "Destroy",review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
      <%= link_to "Edit",edit_review_path(@review.id) %>
      <% end %>
-
-      <p>コメント件数：<%= @review.comments.count %></p>
-       <% @review.comments.each do |comment| %>
-         <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-         <%= comment.member.name %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_cont %>
-         <% if comment.member == current_member %>
-           <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
-         <% end %>
-       <% end %>
-
-        <%= form_with model: [@review, @comment] do |f| %>
-        <%= f.text_area :comment_cont, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-        <% end %>
+     <%= render 'favorite', review: @review %>
+     <%= render 'comment', review: @review, comment: @comment %> <!--レビュー詳細テンプレ-->
 
     </div>
   </div>

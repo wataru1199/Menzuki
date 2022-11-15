@@ -1,0 +1,14 @@
+<!--render時の記述<#%= render 'favorite', review: @review %>
+<% if @review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
+  <p>
+   <%= link_to review_favorites_path(@review), method: :delete do %>
+    ♥<%= @review.favorites.count %> いいね
+   <% end %>
+  </p>
+   <% else %>
+  <p>
+   <%= link_to review_favorites_path(@review), method: :post do %>
+       ♡<%= @review.favorites.count %> いいね
+   <% end %>
+  </p>
+<% end %>
