@@ -17,6 +17,8 @@ class Admin::MembersController < ApplicationController
    end
   end
 
+  private
+  
   def category_params
    params.require(:member).permit(:is_deleted)
   end
