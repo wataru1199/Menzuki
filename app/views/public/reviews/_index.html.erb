@@ -1,30 +1,36 @@
 <!--render時の記述<%#= render 'index', reviews: @reviews %>-->
-<% reviews.each do |review| %>
-
-<div class= "lists border">
-  <div>
-    <%= image_tag review.get_image(100,100) %>
+<div class="card-list-container py-5">
+  <% reviews.each do |review| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <%= image_tag review.get_image(100,100), class:"card-img-top" %>
+    <div class="card-body">
+    <div class="row">
+      <div class="col-2">
+      
+      </div>
+      <div class="col-10">
+       <p class="card-title">
+         <span>投稿者: <%= link_to review.member.name, member_path(review.member.id) %></span>
+       </p>
+       <p class="card-text">
+         <span>店名:   <%= link_to review.shop_name, review_path(review.id) %></span><br>
+         <span>場所:   <%= review.place %><br>
+         <span>カテゴリ: <%= review.category.category_name %></span><br>
+       </p>
+        <% if review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
+           <%= link_to review_favorites_path(review), method: :delete do %>
+             ♥<%= review.favorites.count %> いいね<br>
+           <% end %>
+        <% else %>
+           <%= link_to review_favorites_path(review), method: :post do %>
+             ♡<%= review.favorites.count %> いいね</span><br>
+           <% end %>
+        <% end %>
+             <span>コメント件数：<%= review.comments.count %></span>
+      </div>
+    </div>
+    </div>
   </div>
-  <div>
-    投稿者: <%= link_to review.member.name, member_path(review.member.id) %>
-    店名:   <%= link_to review.shop_name, review_path(review.id) %>
-    場所:   <%= review.place %>
-    カテゴリ: <%= review.category.category_name %>
-  </div>
-  <% if review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
-    <p>
-      <%= link_to review_favorites_path(review), method: :delete do %>
-        ♥<%= review.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to review_favorites_path(review), method: :post do %>
-        ♡<%= review.favorites.count %> いいね
-      <% end %>
-    </p>
   <% end %>
-      コメント件数：<%= review.comments.count %>
-
-<% end %>
+  
 </div>
