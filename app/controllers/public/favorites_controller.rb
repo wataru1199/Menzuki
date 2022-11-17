@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+ 
+ before_action :authenticate_member!
 
 def create  #いいねする
  review = Review.find(params[:review_id])

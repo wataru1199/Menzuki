@@ -1,18 +1,32 @@
-<h2>編集する</h2>
-<%= form_with model: @member do |f| %>
-<div class="field">
-<h4>ユーザ名</h4>
-<%= f.text_field :name %>
+<%= render 'layouts/validates', som: @member %>
+
+<div class= "container">
+  <div class= "row">
+    <div class="title">
+      <h4>プロフィールの編集</h4>
+    </div>
+  </div>
+  <div class= "row">
+      <%= form_with model: @member do |f| %>
+    <div class="field">
+      <h4>プロフィール画像</h4>
+      <%= f.file_field :profile_image, accept: "image/*" %>
+    </div>
+    <div class="field">
+      <h4>ユーザ名</h4>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <h4>メールアドレス</h4>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <h4>紹介文</h4>
+      <%= f.text_area :introduction %>
+    </div>
+      <div class= "field">
+      <%= f.submit '変更保存' %>
+    </div>
+      <% end %>
+  </div>
 </div>
-<div class="field">
-<h4>メールアドレス</h4>
-<%= f.text_field :email %>
-</div>
-<div class="field">
-<h4>紹介文</h4>
-<%= f.text_area :introduction %>
-</div>
-<div class= "field">
-<%= f.submit 'Update Book' %>
-</div>
-<% end %>

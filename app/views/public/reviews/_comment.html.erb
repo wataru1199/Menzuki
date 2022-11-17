@@ -1,14 +1,17 @@
-<!--<#%= render 'comment', review: @review comment: @comment %> <!--コメントテンプレ-->
-<p>コメント件数：<%= review.comments.count %></p>
   <% review.comments.each do |comment| %>
-    <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-    <%= comment.member.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_cont %>
+  <p>
+    <%= image_tag comment.member.get_profile_image(100,100) %>
+  </p>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+    <%= comment.member.name %><br>
+    <%= comment.comment_cont %>
+  <p>
     <% if comment.member == current_member %>
       <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
     <% end %>
   <% end %>
-  <%= form_with model: [review, comment] do |f| %>
-    <%= f.text_area :comment_cont, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+  </p>
+    <%= form_with model: [review, comment] do |f| %>
+      <%= f.text_area :comment_cont, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
   <% end %>

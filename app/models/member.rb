@@ -8,6 +8,9 @@ class Member < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   #memberとrelationshipの結びつけ(Relationships)
   #followedを利用してfollowingを参照できるように
   has_many :relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy

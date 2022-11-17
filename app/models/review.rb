@@ -6,6 +6,9 @@ class Review < ApplicationRecord
 
   has_one_attached :image
 
+  validates :shop_name, presence: true
+  validates :place, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -14,8 +17,8 @@ class Review < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
 
-def favorited_by?(member)
- favorites.exists?(member_id: member.id)
-end
+  def favorited_by?(member)
+   favorites.exists?(member_id: member.id)
+  end
 
 end

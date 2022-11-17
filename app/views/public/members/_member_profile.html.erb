@@ -1,0 +1,25 @@
+<div class= "container">
+  <div class="row">
+    <div class= "col-4">
+      <div class= "profile_box ml-5">
+        <% if member.id == current_member.id %>
+      <div>
+        <%= image_tag member.get_profile_image(100,100) %>
+      </div>
+      <p>
+        <%= current_member.name %><br>
+        <%= current_member.email %>
+        <%= current_member.introduction %>
+      </p>
+        <%= link_to "編集する",edit_member_path(current_member.id) %>
+      <% else %><!--ログインユーザ以外の場合-->
+        <%= image_tag member.profile_image %>
+      <p>
+        <%= member.name %><br>
+        <%= member.introduction %>
+      </p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

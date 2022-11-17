@@ -1,5 +1,3 @@
-
-
-      <%= render 'profile' %> <!--プロフィールテンプレ-->
-      <%= render 'index', reviews: @reviews %> <!--レビュー一覧テンプレ-->
-
+<%= render 'profile' %>
+<%= render 'index', reviews: @reviews, comment: @comment, som: @comment %>
+<%= render 'layouts/footer', obj: @reviews %>

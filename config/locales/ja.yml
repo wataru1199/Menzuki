@@ -185,7 +185,25 @@ ja:
   activerecord:
     attributes:
       member:
-        name: "表示名"
+        name: "氏名"
         password: "パスワード"
         password_confirmation: "パスワード確認"
         email: "メールアドレス"
+
+ja:
+  activerecord:
+    attributes:
+      review:
+        shop_name: "店名"
+        place: "場所"
+        review_cont: "投稿内容"
+
+ja:
+  activerecord:
+    attributes:
+     category:
+        category_name: "カテゴリ名"
+
+
+
+

@@ -1,3 +1,5 @@
+<%= render 'layouts/validates', som: @review %>
+
 <div class= "container">
   <div class= "row mt-5">
     <div class= "col">
@@ -13,7 +15,7 @@
       <%= f.file_field :image, accept: "image/*" %>
       <p>
         <h4>カテゴリ選択</h4><br>
-        <%= f.radio_button :category_id, "1", {:checked => true} %>
+        <%= f.radio_button :category_id, "1" %>
         <%= f.label :category_id, "ラーメン", value: 1 %>
         <%= f.radio_button :category_id, "2" %>
         <%= f.label :category_id, "つけ麺", value: 2 %>
