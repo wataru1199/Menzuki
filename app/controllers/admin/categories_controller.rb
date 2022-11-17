@@ -1,6 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
-
+ before_action :authenticate_admin!
+ 
   def index
     @category= Category.new
     @categories= Category.all
@@ -24,8 +25,8 @@ class Admin::CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to action: "index"
     else
-      @category= Category.find(params[:id])
       render :edit
+      @category= Category.find(params[:id])
     end
   end
 

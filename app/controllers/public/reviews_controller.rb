@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
 
+before_action :authenticate_member!
 
   def new
     @review= Review.new
@@ -7,8 +8,8 @@ class Public::ReviewsController < ApplicationController
 
   def create
     #レビューの新規投稿
-    review= Review.new(review_params)
-    if review.save
+    @review= Review.new(review_params)
+    if @review.save
       redirect_to reviews_path
     else
       render :new
@@ -18,11 +19,12 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
+    @comment = Comment.new
   end
 
   def show
     @review= Review.find(params[:id])
-    @comment = Comment.new 
+    @comment = Comment.new
   end
 
   def destroy

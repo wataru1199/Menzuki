@@ -1,25 +1,58 @@
-<div class= "container">
-  <div class= "row">
-    <div class= "col-4">
-     <%= render 'profile' %> <!--プロフィールテンプレ-->
-    </div>
-    <div class= "col-6">
-     <%= image_tag @review.get_image(100,100) %>
-     <p>
-      店名:   <%= @review.shop_name %><br>
-      場所:   <%= @review.place %><br>
-      カテゴリ: <%= @review.category.category_name %><br>
-      投稿者: <%= @review.member.name %><br>
-      レビュー: <%= @review.review_cont %><br>
-      投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
-     </p>
-     <% if @review.member == current_member %>
-     <%= link_to "Destroy",review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
-     <%= link_to "Edit",edit_review_path(@review.id) %>
-     <% end %>
-     <%= render 'favorite', review: @review %>
-     <%= render 'comment', review: @review, comment: @comment %> <!--レビュー詳細テンプレ-->
+<%= render 'profile' %> <!--プロフィールテンプレ-->
 
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+  <%= image_tag @review.get_image(100,100) %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            投稿者: <%= @review.member.name %><br>
+          </p>
+          <p class="card-text">
+            店名:   <%= @review.shop_name %><br>
+            場所:   <%= @review.place %><br>
+            カテゴリ: <%= @review.category.category_name %><br>
+            レビュー: <%= @review.review_cont %><br>
+            投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
+          </p>
+            <% if @review.member == current_member %>
+              <%= link_to "投稿を消す",review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+              <%= link_to "投稿を編集する",edit_review_path(@review.id) %>
+            <% end %>
+          <p>
+          <% if @review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
+            <%= link_to review_favorites_path(@review), method: :delete do %>
+              ♥<%= @review.favorites.count %> いいね
+            <% end %>
+          <% else %>
+            <%= link_to review_favorites_path(@review), method: :post do %>
+              ♡<%= @review.favorites.count %> いいね
+            <% end %>
+          <% end %>
+          </p>
+          <p>
+          <% @review.comments.each do |comment| %>
+             <%= comment.created_at.strftime('%Y/%m/%d') %>
+             <%= comment.member.name %><br>
+             <%= comment.comment_cont %>
+          <p>
+            <% if comment.member == current_member %>
+              <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
+            <% end %>
+          </p>
+          <% end %>
+          <%= form_with model: [@review, @comment] do |f| %>
+            <%= f.text_area :comment_cont, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+          </p>
+
+        </div>
+      </div>
     </div>
   </div>
+
 </div>

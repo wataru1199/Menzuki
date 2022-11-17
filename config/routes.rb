@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     get 'about' => "homes#about"
     resources :categories, only: [:index, :new, :create, :edit, :update]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
-    resources :relations, only: [:create, :destroy]
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -32,7 +31,6 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
-    resources :relations, only: [:create, :destroy]
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy]

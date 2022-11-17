@@ -5,9 +5,15 @@
 
 <div class= "container mt-2">
  <div class= "row">
-  <div class= "col-6">
-
+  <div class= "col-8">
+   <h4>最新投稿</h4>
+   <% @reviews.first(1).each do |review| %>
+    画像<%= review.get_image(100,100) %><br>
+    <%= review.shop_name %><br>
+    <%= review.place %>
+   <% end %>
   </div>
+  
   <div class= "col-3">
    <table class= "table table-bordered">
     <thead>
@@ -25,7 +31,7 @@
         </tr>
       <% end %>
       <tr>
-   
+
        </tr>
      </div>
     </tbody>

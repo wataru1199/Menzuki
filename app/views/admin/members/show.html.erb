@@ -1,7 +1,7 @@
   <%= flash[:success] %>
 <div class="container">
   <div class= "row">
-    <div class= "col-6">
+    <div class= "col-4">
       <%= @member.name %>さんのプロフィール<br>
       <div class="index-box border my-2">
          <div class="index-field mr-5">
@@ -21,9 +21,9 @@
          </div>
        </div>
     </div>
-    <div class= "col-6">
+    <div class= "col-8">
       <%= @member.name  %>さんの投稿
-      <div class="index-box border my-2">
+      <div class="index-box my-2">
          <div class="index-field d-flex justify-content-left mr-5">
           <% @reviews.each do |review| %>
           <div class= "lists border">
@@ -36,7 +36,6 @@
             カテゴリ: <%= review.category.category_name %>
            </div>
             <%= review.favorites.count %> いいね
-            コメント件数：<%= review.comments.count %>
             <p>コメント件数：<%= review.comments.count %></p>
            <% review.comments.each do |comment| %>
             <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
@@ -50,6 +49,7 @@
           <% end %>
          </div>
        </div>
+      </div>
     </div>
   </div>
 </div>
