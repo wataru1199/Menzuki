@@ -2,11 +2,6 @@ class Public::CommentsController < ApplicationController
 
 before_action :authenticate_member!
 
-  def show
-   @review = Review.find(params[:id])
-   @comment = Comment.new
-  end
-
   def create
    review = Review.find(params[:review_id]) #URLから現在のreviewレコード取得
    comment = current_member.comments.new(comment_params) #現在のmemberに紐づくcommentレコードを作成

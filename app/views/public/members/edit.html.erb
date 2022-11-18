@@ -29,4 +29,7 @@
     </div>
       <% end %>
   </div>
+  <div class= "row">
+    <%= link_to "退会する", status_member_path(current_member.id), method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
+  </div>
 </div>

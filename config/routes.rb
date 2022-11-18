@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   devise_for :members, controllers: {
   sessions: 'public/members/sessions',
   registrations: 'public/members/registrations'
-
 }
 
-
+  devise_scope :member do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
 
 
   #会員側
@@ -16,10 +17,13 @@ Rails.application.routes.draw do
 
     root :to => "homes#top"
     get 'about' => "homes#about"
-    resources :categories, only: [:index, :new, :create, :edit, :update]
+    
+    patch 'members/:id/status' => 'members#status', as: 'status_member'
+    #resources :categories, only: [:index]
+    get 'categories/:id' => "categories#index", as: "categories"
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+      resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
   end

@@ -1,10 +1,13 @@
-<%= render 'layouts/validates', som: som %>
+<%= render 'layouts/validates', som: @comment %>
 <div class="card-list-container py-5">
-  <% reviews.each do |review| %>
+  <%= @category.category_name %>カテゴリの投稿一覧
+  <% @category.reviews.each do |review| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
       <%= image_tag review.get_image(100,100), class:"card-img-top border-bottom" %>
     <div class="card-body">
     <div class="row">
+      <div class="col-2">
+      </div>
       <div class="col-10">
        <p class="card-title">
          <span>投稿者: <%= link_to review.member.name, member_path(review.member.id) %></span>
@@ -14,12 +17,12 @@
          <span>場所:   <%= review.place %><br>
          <span>カテゴリ: <%= review.category.category_name %></span><br>
          <span id= "favorites">
-         <%= render 'favorite', review: review %>
+         <%= render 'public/reviews/favorite', review: review %>
          </span><br>
          <span>コメント<%= review.comments.count %>件</span>
        </p>
        <p >
-         <%= render 'comment', review: review, comment: comment  %>
+         <%= render 'public/reviews/comment', review: review, comment: @comment  %>
        </p>
       </div>
     </div>

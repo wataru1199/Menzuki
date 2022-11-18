@@ -26,7 +26,7 @@
      <div>
       <% @categories.each do |category| %>
        <tr>
-        <td><%= category.category_name %></td>
+        <td><%= link_to category.category_name, categories_path(category.id) %></td>
         <td><%= category.reviews.count %>件</td>
         </tr>
       <% end %>

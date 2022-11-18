@@ -32,5 +32,16 @@ def get_profile_image(width, height)
     profile_image.variant(resize_to_limit: [100, 100]).processed
 end
 
+def self.guest
+  find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |member|
+    member.password = SecureRandom.urlsafe_base64
+    member.name = "guestuser"
+  end
+end
+
+  # is_deletedがfalseならtrueを返すようにしている
+def active_for_authentication?
+  super && (is_deleted == false)
+end
 
 end

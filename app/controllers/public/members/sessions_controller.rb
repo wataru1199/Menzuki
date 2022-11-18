@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::Members::SessionsController < Devise::SessionsController
+
+  before_action :reject_member, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   # def new
@@ -16,7 +18,20 @@ class Public::Members::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+protected
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+  def reject_member
+    @member = Member.find_by(name: params[:member][:name])
+    if @member
+      if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to root_path
+      else
+        flash[:notice] = "項目を入力してください"
+        redirect_to 
+      end
+    end
+  end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
