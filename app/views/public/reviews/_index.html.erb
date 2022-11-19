@@ -1,0 +1,29 @@
+<%= render 'layouts/validates', som: som %>
+<div class="card-list-container py-5">
+  <% reviews.each do |review| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <%= image_tag review.get_image(100,100), class:"card-img-top border-bottom" %>
+    <div class="card-body">
+    <div class="row">
+      <div class="col-10">
+       <p class="card-title">
+         <span>投稿者: <%= link_to review.member.name, member_path(review.member.id) %></span>
+       </p>
+       <p class="card-text">
+         <span>店名:   <%= link_to review.shop_name, review_path(review.id) %></span><br>
+         <span>場所:   <%= review.place %><br>
+         <span>カテゴリ: <%= review.category.category_name %></span><br>
+         <span id= "favorites">
+         <%= render 'favorite', review: review %>
+         </span><br>
+         <span>コメント<%= review.comments.count %>件</span>
+       </p>
+       <p >
+         <%= render 'comment', review: review, comment: comment  %>
+       </p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <% end %>
+</div>

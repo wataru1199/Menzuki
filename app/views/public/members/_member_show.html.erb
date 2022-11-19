@@ -1,0 +1,32 @@
+<!--render時の記述<%#= render 'member_show', reviews: @reviews %>-->
+<div class="card-list-container py-5">
+  <% reviews.each do |review| %>
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <%= image_tag review.get_image(100,100), class:"card-img-top" %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <span>店名:   <%= review.shop_name %><br>
+          </p>
+          <p class="card-text">
+            <span>場所:   <%= review.place %></span><br>
+            <span>カテゴリ: <%= review.category.category_name %></span><br>
+            <span>投稿者: <%= review.member.name %></span><br>
+            <span>レビュー: <%= review.review_cont %></span><br>
+            <span>投稿日時: <%= review.created_at.strftime('%Y/%m/%d') %></span><br>
+            <span><%= review.favorites.count %> いいね</span><br>
+            <span>コメント件数：<%= review.comments.count %></span><br>
+            <% if review.member == current_member %>
+              <%= link_to "投稿を消す",review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+              <%= link_to "投稿を編集する",edit_review_path(review.id) %>
+            <% end %>
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

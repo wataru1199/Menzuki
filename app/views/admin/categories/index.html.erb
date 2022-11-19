@@ -1,0 +1,29 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-8 mx-auto">
+     <table class="table">
+      <thead>
+        <tr>
+          <th>カテゴリ名</th>
+          <th colspan="3"></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+         <% @categories.each do |category| %>
+           <div class="index-box my-2">
+             <div class="index-field d-flex justify-content-left mr-5">
+               <div>
+                 <tr>
+                  <th><%= category.category_name %></th>
+                  <td><%= link_to "編集",edit_admin_category_path(category.id) %></td>
+                 </tr>
+               </div>
+             </div>
+           </div>
+         <% end %>
+      </tbody>
+     </table>
+    </div>
+  </div>
+</div>

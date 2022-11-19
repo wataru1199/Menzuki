@@ -1,0 +1,45 @@
+<div class= "container">
+  <div class= "row">
+   <div class= "col">
+    <h2>投稿編集</h2>
+    <%= form_with model: @review do |f| %>
+    <div class="field" >
+    <%= image_tag @review.get_image(100,100) %>
+    <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <div class="field" >
+    <h4>店名</h4>
+    <%= f.text_field :shop_name %>
+    </div>
+    <div class="field" >
+    <h4>場所</h4>
+    <%= f.text_field :place %>
+    </div>
+    <div class="field" >
+    <h4>レビュー内容</h4>
+    <%= f.text_area :review_cont %>
+    </div>
+    <div class="field" >
+      <h4>カテゴリ選択</h4><br>
+        <%= f.radio_button :category_id, "1", {:checked => true} %>
+        <%= f.label :category_id, "ラーメン", value: 1 %>
+        <%= f.radio_button :category_id, "2" %>
+        <%= f.label :category_id, "つけ麺", value: 2 %>
+        <%= f.radio_button :category_id, "3" %>
+        <%= f.label :category_id, "そば", value: 3 %>
+        <%= f.radio_button :category_id, "4" %>
+        <%= f.label :category_id, "うどん", value: 4 %>
+        <%= f.radio_button :category_id, "5" %>
+        <%= f.label :category_id, "まぜそば", value: 5 %>
+        <%= f.radio_button :category_id, "6" %>
+        <%= f.label :category_id, "パスタ", value: 6 %>
+        <%= f.radio_button :category_id, "7" %>
+        <%= f.label :category_id, "その他", value: 7 %>
+    </div>
+    <div class= "field">
+    <%= f.submit '投稿内容の変更' %>
+    </div>
+    <% end %>
+   </div>
+  </div>
+</div>
