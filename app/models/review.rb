@@ -21,4 +21,8 @@ class Review < ApplicationRecord
    favorites.exists?(member_id: member.id)
   end
 
+  def self.looks(word)
+    @review = Review.where("shop_name LIKE?","%#{word}%").or(Review.where("review_cont LIKE?","%#{word}%").or(Review.where("place LIKE?","%#{word}%")))
+  end
+
 end

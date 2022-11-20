@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searches/search'
+  end
+  get 'searches/search'
   devise_for :admins
   devise_for :members, controllers: {
   sessions: 'public/members/sessions',
@@ -17,11 +21,11 @@ Rails.application.routes.draw do
 
     root :to => "homes#top"
     get 'about' => "homes#about"
-    
+
     patch 'members/:id/status' => 'members#status', as: 'status_member'
-    #resources :categories, only: [:index]
+    get "search" => "searches#search"
     get 'categories/:id' => "categories#index", as: "categories"
-    resources :members, only: [:index, :new, :create, :show, :edit, :update]
+    resources :members, only: [:show, :edit, :update]
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -35,8 +39,8 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
-    resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :reviews, only: [:index, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:destroy]
       resource :favorites, only: [:create, :destroy]
     end
   end

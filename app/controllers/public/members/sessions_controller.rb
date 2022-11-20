@@ -26,9 +26,6 @@ protected
       if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to root_path
-      else
-        flash[:notice] = "項目を入力してください"
-        render new_member_session_path
       end
     end
   end
