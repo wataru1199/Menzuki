@@ -2,15 +2,18 @@
  <h2 class= "top-main-title">麺好き!</h2><br>
   <h4 class= "top-sub-title">~今日はどの麺にしますか？~</h4>
 </div>
-
+<%= flash[:notice] %>
 <div class= "container mt-2">
  <div class= "row">
-  <div class= "col-8">
+  <div class= "col-5">
+  </div>
+  <div class= "col-4">
    <h4>最新投稿</h4>
    <% @reviews.first(1).each do |review| %>
-    画像<%= review.get_image(100,100) %><br>
-    <%= review.shop_name %><br>
-    <%= review.place %>
+    <%= image_tag review.get_image(100,100) %><br>
+    店名:<%= review.shop_name %><br>
+    場所:<%= review.place %><br>
+    感想:<%= review.review_cont %>
    <% end %>
   </div>
 
