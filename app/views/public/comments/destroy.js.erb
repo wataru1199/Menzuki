@@ -1,0 +1,2 @@
+$("#comments").html("<%= j(render partial: 'public/comments/comment', locals: { review: @review, comment: @comment }) %>");
+$("#comment_count").html("コメント<%= @review.comments.count %>件");

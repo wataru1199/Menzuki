@@ -2,8 +2,15 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_member!
 
   def search
-        @reviews = Review.looks(params[:word]).page(params[:page]).per(4)
-        @comment = Comment.new
+     @comment = Comment.new
+     @reviews = Review.looks(search_params).page(params[:page]).per(4)
+  end
+
+
+ private
+
+  def search_params
+   params.require(:word)
   end
 
 end

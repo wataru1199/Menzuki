@@ -13,7 +13,7 @@
       </p>
         <%= link_to "編集する",edit_member_path(current_member.id) %>
       <% else %><!--ログインユーザ以外の場合-->
-        <%= image_tag member.profile_image %>
+        <%= image_tag member.get_profile_image(90,100) %>
       <p>
         <%= member.name %><br>
         <%= member.introduction %>

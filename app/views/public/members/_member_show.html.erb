@@ -17,8 +17,23 @@
             <span>投稿者: <%= review.member.name %></span><br>
             <span>レビュー: <%= review.review_cont %></span><br>
             <span>投稿日時: <%= review.created_at.strftime('%Y/%m/%d') %></span><br>
-            <span><%= review.favorites.count %> いいね</span><br>
-            <span>コメント件数：<%= review.comments.count %></span><br>
+            <span id= "favorites">
+             <%= render 'public/favorites/favorite', review: review %>
+            </span><br>
+         <span id= "comment_count">
+             コメント<%= review.comments.count %>件
+         </span>
+       </p>
+       <p>
+         <span id= "comments">
+           <%= render 'public/comments/comment', review: review, comment: comment %>
+         </span>
+       </p>
+       <p>
+         <span id= "comment_form">
+           <%= render 'public/comments/form', review: review, comment: @comment %>
+          </span>
+       </p><br>
             <% if review.member == current_member %>
               <%= link_to "投稿を消す",review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
               <%= link_to "投稿を編集する",edit_review_path(review.id) %>

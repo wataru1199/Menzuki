@@ -6,6 +6,7 @@ before_action :ensure_guest_user, only: [:edit]
   def show
     @member= Member.find(params[:id])
     @reviews= Review.all.where(member_id: @member.id)
+    @comment = Comment.new
   end
 
   def edit

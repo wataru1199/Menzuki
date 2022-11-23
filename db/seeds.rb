@@ -88,7 +88,7 @@ Category.create!(
 
  Admin.create!(
    [    {
-      email: "admin@co.jp",
-      password: "666666",
+      email: ENV['SECRET_EMAIL'],
+      password: ENV['SECRET_PASSWORD'],
     }   ]
  )

@@ -22,33 +22,23 @@
               <%= link_to "投稿を消す",review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
               <%= link_to "投稿を編集する",edit_review_path(@review.id) %>
             <% end %>
-          <p>
-          <% if @review.favorited_by?(current_member) %><!--=自分がいいねしていたら-->
-            <%= link_to review_favorites_path(@review), method: :delete do %>
-              ♥<%= @review.favorites.count %> いいね
-            <% end %>
-          <% else %>
-            <%= link_to review_favorites_path(@review), method: :post do %>
-              ♡<%= @review.favorites.count %> いいね
-            <% end %>
-          <% end %>
+          <p id= "favorites">
+            <%= render 'public/favorites/favorite', review: @review %>
           </p>
-          <p>
-          <% @review.comments.each do |comment| %>
-             <%= comment.created_at.strftime('%Y/%m/%d') %>
-             <%= comment.member.name %><br>
-             <%= comment.comment_cont %>
-          <p>
-            <% if comment.member == current_member %>
-              <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
-            <% end %>
-          </p>
-          <% end %>
-          <%= form_with model: [@review, @comment] do |f| %>
-            <%= f.text_area :comment_cont, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-          </p>
+         <span id= "comment_count">
+             コメント<%= @review.comments.count %>件
+         </span>
+       </p>
+       <p>
+         <span id= "comments">
+           <%= render 'public/comments/comment', review: @review, comment: @comment %>
+         </span>
+       </p>
+       <p>
+         <span id= "comment_form">
+           <%= render 'public/comments/form', review: @review, comment: @comment %>
+          </span>
+       </p>
 
         </div>
       </div>

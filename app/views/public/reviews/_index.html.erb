@@ -14,12 +14,21 @@
          <span>場所:   <%= review.place %><br>
          <span>カテゴリ: <%= review.category.category_name %></span><br>
          <span id= "favorites">
-         <%= render 'favorite', review: review %>
+         <%= render 'public/favorites/favorite', review: review %>
          </span><br>
-         <span>コメント<%= review.comments.count %>件</span>
+         <span id= "comment_count">
+             コメント<%= review.comments.count %>件
+         </span>
        </p>
-       <p >
-         <%= render 'comment', review: review, comment: comment  %>
+       <p>
+         <span id= "comments">
+           <%= render 'public/comments/comment', review: review, comment: comment %>
+         </span>
+       </p>
+       <p>
+         <span id= "comment_form">
+           <%= render 'public/comments/form', review: review, comment: @comment %>
+          </span>
        </p>
       </div>
     </div>

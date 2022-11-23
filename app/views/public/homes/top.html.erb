@@ -5,16 +5,22 @@
 <%= flash[:notice] %>
 <div class= "container mt-2">
  <div class= "row">
-  <div class= "col-5">
+  <div class= "col-3">
   </div>
-  <div class= "col-4">
+  <div class= "col-6 text-center">
    <h4>最新投稿</h4>
-   <% @reviews.first(1).each do |review| %>
-    <%= image_tag review.get_image(100,100) %><br>
-    店名:<%= review.shop_name %><br>
-    場所:<%= review.place %><br>
-    感想:<%= review.review_cont %>
-   <% end %>
+   <div class="card w-50 mt-4 mx-auto shadow-lg">
+    <div class="card-body">
+      <% @reviews.first(1).each do |review| %>
+          <%= image_tag review.get_image(100,100), class:"card-img-top border-bottom" %><br>
+         <div class="card-text">
+          店名:<%= review.shop_name %><br>
+          場所:<%= review.place %><br>
+          感想:<%= review.review_cont %>
+         </div>
+      <% end %>
+    </div>
+   </div>
   </div>
 
   <div class= "col-3">
@@ -33,9 +39,6 @@
         <td><%= category.reviews.count %>件</td>
         </tr>
       <% end %>
-      <tr>
-
-       </tr>
      </div>
     </tbody>
    </table>
