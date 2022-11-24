@@ -1,19 +1,20 @@
 class Admin::CategoriesController < ApplicationController
 
  before_action :authenticate_admin!
- 
+
   def index
     @category= Category.new
     @categories= Category.all
   end
 
   def create
+    @categories= Category.all
     @category= Category.new(category_params)
-    if @category.save
-      redirect_to action: "index"
-    else
-      render action: "index"
-    end
+     @category.save
+    #   redirect_to action: "index"
+    # else
+    #   render action: "index"
+    # end
   end
 
   def edit

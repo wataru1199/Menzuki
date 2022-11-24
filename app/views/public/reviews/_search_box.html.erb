@@ -7,6 +7,6 @@
   <% if @reviews.exists? %>
     "<%= params[:word] %>" 検索結果
   <% else %>
-    <%= params[:word] %>の検索結果はありません
+    "<%= params[:word] %>"の検索結果はありません
   <% end %>
 </div>

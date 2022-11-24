@@ -15,7 +15,7 @@ class Admin::MembersController < ApplicationController
    @member= Member.find(params[:id])
    if @member.update(category_params)
       flash[:success]= "会員ステータスを更新しました"
-      redirect_to admin_member_path(@member.id)
+      redirect_to admin_members_path
    end
   end
 

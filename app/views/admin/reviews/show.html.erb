@@ -1,7 +1,7 @@
-<h2>投稿詳細</h2>
 <div class= "container">
   <div class= "row">
-    <div class= "col-6">
+    <div class= "col-6 clearfix mx-auto">
+      <h2 class= "mb-5" >投稿詳細</h2>
      <%= image_tag @review.get_image(100,100) %>
      <p>
       店名:   <%= @review.shop_name %><br>
@@ -19,8 +19,9 @@
         <%= link_to "削除", admin_review_comment_path(comment.review, comment), method: :delete %>
       <% end %>
      </p>
-     <%= link_to "Destroy",admin_review_path(@review.id),method: :delete, "data-confirm" => "Are you sure?" %>
-     <%= link_to "Edit",edit_admin_review_path(@review.id) %>
+     <%= link_to "削除する",admin_review_path(@review.id),method: :delete, "data-confirm" => "本当に削除しますか?" %>
+     <%= link_to "編集する
+     ",edit_admin_review_path(@review.id) %>
     </div>
   </div>
 </div>

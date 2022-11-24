@@ -1,0 +1,32 @@
+<div id="categories_index">
+   <table class="table">
+    <thead>
+      <tr>
+        <th>カテゴリ名</th>
+        <th></th>
+        <th></th>
+        <th>投稿数</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% categories.each do |category| %>
+         <div class="index-box my-2">
+           <div class="index-field d-flex justify-content-left mr-5">
+             <div>
+               <tr>
+                <th><%= category.category_name %></th>
+                <td><%= link_to "編集",edit_admin_category_path(category.id) %></td>
+                <td>
+                  <% if category.reviews.count == 0 %>
+                  <%= link_to "削除",admin_category_path(category.id), method: :delete, remote: true %>
+                  <% end %>
+                </td>
+                <td><%= category.reviews.count %></td>
+               </tr>
+             </div>
+           </div>
+         </div>
+       <% end %>
+    </tbody>
+   </table>
+</div>

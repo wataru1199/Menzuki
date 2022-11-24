@@ -10,12 +10,9 @@
              ユーザ名:   <%= @member.name %><br>
              紹介文:   <%= @member.introduction %><br>
             <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
-              <%= f.radio_button :is_deleted, true %>
-              <%= f.label :is_deleted, '退会' %>
-              <%= f.radio_button :is_deleted, false %>
-              <%= f.label :is_deleted, '有効' %>
+              <%= f.hidden_field :is_deleted, :value => true %>
             <div class= "field">
-              <%= f.submit '退会', class:"btn btn-success" %>
+              <%= f.submit '退会', class:"btn btn-success",  "data-confirm" => "本当に削除しますか?" %>
             </div>
             <% end %>
          </div>
@@ -45,7 +42,7 @@
               <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
              <% end %>
            <% end %>
-             <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "Are you sure?" %>
+             <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "本当に削除しますか?" %>
           <% end %>
          </div>
        </div>
