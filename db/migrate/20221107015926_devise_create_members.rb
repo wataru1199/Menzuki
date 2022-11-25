@@ -9,7 +9,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
 
       t.string :name,              null: false
       t.boolean :is_deleted,      null: false, default: false
-      t.text :introduction,        default: ""
+      t.text :introduction
 
       ## Recoverable
       t.string   :reset_password_token
