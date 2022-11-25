@@ -18,21 +18,21 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @category= Category.find(params[:id])
+    @category= specific_category
   end
 
   def update
-    @category= Category.find(params[:id])
+    @category= specific_category
     if @category.update(category_params)
       redirect_to action: "index"
     else
       render :edit
-      @category= Category.find(params[:id])
+      @category= specific_category
     end
   end
 
   def destroy
-       @category= Category.find(params[:id])
+       @category= specific_category
     if @category.destroy
        @categories= Category.all.page(params[:page]).per(4)
        redirect_to action: "index"
@@ -43,6 +43,10 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
    params.require(:category).permit(:category_name)
+  end
+
+  def specific_category
+    Category.find(params[:id])
   end
 
 end

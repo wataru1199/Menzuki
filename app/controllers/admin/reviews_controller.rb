@@ -1,5 +1,5 @@
 class Admin::ReviewsController < ApplicationController
-  
+
    before_action :authenticate_admin!
 
   def index
@@ -7,7 +7,7 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
-       @review= Review.find(params[:id])
+       @review= specific_review
     if @review.destroy
        @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
        redirect_to admin_reviews_path
@@ -15,15 +15,15 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def show
-     @review= Review.find(params[:id])
+     @review= specific_review
   end
 
   def edit
-     @review= Review.find(params[:id])
+     @review= specific_review
   end
 
   def update
-     @review= Review.find(params[:id])
+     @review= specific_review
     if @review.update(review_params)
       redirect_to admin_review_path(@review.id)
     end
@@ -34,6 +34,10 @@ class Admin::ReviewsController < ApplicationController
 
   def review_params
    params.require(:review).permit(:shop_name, :place, :review_cont, :category_id, :image, :member_id)
+  end
+
+  def specific_review
+    Review.find(params[:id])
   end
 
 end

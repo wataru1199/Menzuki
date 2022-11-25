@@ -40,21 +40,21 @@ Category.create!(
    [    {
       email: "p@co.jp",
       password: "666666",
-      name: "佐藤健司",
+      name: "サンプル健司",
       is_deleted: false,
       introduction: "よろしくお願いします！",
     },
         {
       email: "a@co.jp",
       password: "666666",
-      name: "斎藤あゆみ",
+      name: "サンプルあゆみ",
       is_deleted: false,
       introduction: "よろしくお願いします！",
     },
         {
       email: "b@co.jp",
       password: "666666",
-      name: "高橋一誠",
+      name: "サンプル一誠",
       is_deleted: false,
       introduction: "よろしくお願いします！",
     }   ]
@@ -65,21 +65,21 @@ Category.create!(
    [    {
       member_id: "1",
       category_id: "1",
-      shop_name: "神楽",
+      shop_name: "サンプル店",
       place: "鳥取",
       review_cont: "おいしい！",
     },
         {
       member_id: "1",
       category_id: "3",
-      shop_name: "しおや",
+      shop_name: "サンプル店2",
       place: "広島",
       review_cont: "絶妙な塩加減！",
     },
         {
       member_id: "2",
       category_id: "5",
-      shop_name: "湖沼",
+      shop_name: "サンプル店3",
       place: "東京",
       review_cont: "高級感！",
     }   ]
