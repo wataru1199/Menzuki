@@ -23,12 +23,12 @@ before_action :authenticate_member!
   end
 
   def show
-    @review= specific_review
+    @review= Review.find(params[:id])
     @comment = Comment.new
   end
 
   def destroy
-    @review= specific_review
+    @review= Review.find(params[:id])
     if @review.destroy
       @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
       redirect_to reviews_path
@@ -36,11 +36,11 @@ before_action :authenticate_member!
   end
 
   def edit
-    @review= specific_review
+    @review= Review.find(params[:id])
   end
 
   def update
-    @review= specific_review
+    @review= Review.find(params[:id])
     if @review.update(review_params)
       redirect_to review_path(@review.id)
     end
@@ -51,10 +51,6 @@ before_action :authenticate_member!
 
   def review_params
    params.require(:review).permit(:shop_name, :place, :review_cont, :category_id, :image, :member_id)
-  end
-  
-  def specific_review
-    Review.find(params[:id])
   end
 
 

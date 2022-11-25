@@ -4,17 +4,17 @@ before_action :authenticate_member!
 before_action :ensure_guest_user, only: [:edit]
 
   def show
-    @member= specific_member
+    @member= Member.find(params[:id])
     @reviews= Review.all.where(member_id: @member.id)
     @comment = Comment.new
   end
 
   def edit
-    @member= specific_member
+    @member= Member.find(params[:id])
   end
 
   def update
-    @member= specific_member
+    @member= Member.find(params[:id])
     if @member.update(member_params)
       redirect_to member_path(@member.id)
     else
@@ -24,7 +24,7 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def status
-    @member= specific_member
+    @member= Member.find(params[:id])
     @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -43,10 +43,7 @@ before_action :ensure_guest_user, only: [:edit]
       redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
-  
-  def specific_member
-    Member.find(params[:id])
-  end
+
 
 end
 

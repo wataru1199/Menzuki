@@ -61,29 +61,33 @@ Category.create!(
  )
 
 
- Review.create!(
-   [    {
+
+ review = Review.create!(
       member_id: "1",
       category_id: "1",
       shop_name: "サンプル店",
       place: "鳥取",
       review_cont: "おいしい！",
-    },
-        {
-      member_id: "1",
-      category_id: "3",
-      shop_name: "サンプル店2",
-      place: "広島",
-      review_cont: "絶妙な塩加減！",
-    },
-        {
+      )
+review.image.attach(io: File.open(Rails.root.join('app/assets/images/24761383_s.jpg')), filename: '24761383_s.jpg')
+
+ review = Review.create!(
       member_id: "2",
-      category_id: "5",
-      shop_name: "サンプル店3",
+      category_id: "1",
+      shop_name: "サンプル店",
+      place: "鳥取",
+      review_cont: "おいしい！",
+      )
+review.image.attach(io: File.open(Rails.root.join('app/assets/images/24908603_m.jpg')), filename: '24908603_m.jpg')
+
+ review = Review.create!(
+      member_id: "3",
+      category_id: "1",
+      shop_name: "サンプル店",
       place: "東京",
-      review_cont: "高級感！",
-    }   ]
- )
+      review_cont: "おいしい！",
+      )
+review.image.attach(io: File.open(Rails.root.join('app/assets/images/25006140_s.jpg')), filename: '25006140_s.jpg')
 
 
  Admin.create!(

@@ -7,12 +7,12 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
-    @member= specific_member
+    @member= Member.find(params[:id])
     @reviews= @member.reviews.all
   end
 
   def update
-   @member= specific_member
+   @member= Member.find(params[:id])
    if @member.update(category_params)
       flash[:success]= "会員ステータスを更新しました"
       redirect_to admin_members_path
@@ -23,10 +23,6 @@ class Admin::MembersController < ApplicationController
 
   def category_params
    params.require(:member).permit(:is_deleted)
-  end
-
-  def specific_member
-    Member.find(params[:id])
   end
 
 end
