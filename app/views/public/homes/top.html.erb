@@ -13,8 +13,9 @@
       <% @reviews.first(1).each do |review| %>
           <%= image_tag review.get_image(100,100), class:"card-img-top border-bottom" %><br>
          <div class="card-text">
-          店名:<%= review.shop_name %><br>
+          店名:<%= link_to review.shop_name, review_path(review.id) %><br>
           場所:<%= review.place %><br>
+          カテゴリ:<%= review.category.category_name %><br>
           感想:<%= review.review_cont %>
          </div>
       <% end %>
