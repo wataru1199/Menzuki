@@ -93,5 +93,4 @@ review.image.attach(io: File.open(Rails.root.join('app/assets/images/25006140_s.
  Admin.create!(
       email: ENV['SECRET_EMAIL'],
       password: ENV['SECRET_PASSWORD'],
-    }   ]
  )
