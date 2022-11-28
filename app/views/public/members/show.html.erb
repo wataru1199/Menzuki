@@ -1,2 +1,5 @@
 <%= render 'member_profile', member: @member %>
+<div class="text-center">
+  <h3><%= @member.name %>さんの投稿一覧</h3>
+</div>
 <%= render 'member_show', reviews: @reviews, comment: @comment %>

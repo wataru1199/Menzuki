@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     patch 'members/:id/status' => 'members#status', as: 'status_member'
     get "search" => "searches#search"
     get 'categories/:id' => "categories#index", as: "categories"
-    resources :members, only: [:show, :edit, :update]
+    resources :members, only: [:show, :edit, :update] do
+
+      #get "favorites" => "members#favorites"
+      get :favorites
+    end
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

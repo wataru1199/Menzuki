@@ -1,0 +1,5 @@
+<%= render 'member_profile', member: @member %>
+<div class="text-center">
+  <h3><%= @member.name %>さんのお気に入りリスト</h3>
+</div>
+<%= render 'public/reviews/index', reviews: @favorite_reviews, comment: @comment, som: @comment %>

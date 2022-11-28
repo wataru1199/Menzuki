@@ -31,6 +31,13 @@ before_action :ensure_guest_user, only: [:edit]
     redirect_to root_path
   end
 
+  def favorites
+    @member = Member.find_by(params[:id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:review_id)
+    @favorite_reviews = Review.find(favorites)
+    @comment = Comment.new
+  end
+
   private
 
   def member_params
@@ -38,11 +45,12 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def ensure_guest_user
-    @user = specific_member
-    if @user.name == "guestuser"
+    @member= Member.find(params[:id])
+    if @member.name == "guestuser"
       redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
+
 
 
 end

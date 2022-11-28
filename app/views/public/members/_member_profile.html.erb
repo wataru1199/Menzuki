@@ -1,5 +1,5 @@
 <div class= "container">
-  <div class="row">
+  <div class="row mb-5">
     <div class= "col-4">
       <div class= "profile_box ml-5">
         <% if member.id == current_member.id %>
@@ -11,18 +11,17 @@
         <%= current_member.email %>
         <%= current_member.introduction %>
       </p>
+        <%= link_to "いいねした投稿", member_favorites_path(member.id) %><br>
         <%= link_to "編集する",edit_member_path(current_member.id) %>
       <% else %><!--ログインユーザ以外の場合-->
         <%= image_tag member.get_profile_image(90,100) %>
       <p>
         <%= member.name %><br>
-        <%= member.introduction %>
+        <%= member.introduction %><br>
       </p>
+        <%= link_to "いいねした投稿", member_favorites_path(member.id) %>
       <% end %>
       </div>
     </div>
-    <div class= col-4>
-       <h4><%= member.name %>さんの投稿一覧</h4>
-      </div>
   </div>
 </div>

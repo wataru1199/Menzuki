@@ -3,6 +3,7 @@ class Review < ApplicationRecord
   has_many :favorites, dependent: :destroy
   belongs_to :category
   belongs_to :member
+  has_many :favorited_members, through: :favorites, source: :member
 
   has_one_attached :image
 
