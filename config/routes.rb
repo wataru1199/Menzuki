@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     get 'categories/:id' => "categories#index", as: "categories"
     resources :members, only: [:show, :edit, :update] do
-
-      #get "favorites" => "members#favorites"
-      get :favorites
+      member do
+        get :favorites
+      end
     end
     resources :reviews, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]

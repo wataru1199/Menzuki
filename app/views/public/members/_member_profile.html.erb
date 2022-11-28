@@ -11,7 +11,7 @@
         <%= current_member.email %>
         <%= current_member.introduction %>
       </p>
-        <%= link_to "いいねした投稿", member_favorites_path(member.id) %><br>
+        <%= link_to "いいねした投稿", favorites_member_path(member.id) %><br>
         <%= link_to "編集する",edit_member_path(current_member.id) %>
       <% else %><!--ログインユーザ以外の場合-->
         <%= image_tag member.get_profile_image(90,100) %>

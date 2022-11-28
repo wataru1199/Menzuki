@@ -32,9 +32,9 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def favorites
-    @member = Member.find_by(params[:id])
+    @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:review_id)
-    @favorite_reviews = Review.find(favorites)
+    @favorite_reviews = Review.where(id: favorites).page(params[:page]).per(4)
     @comment = Comment.new
   end
 
