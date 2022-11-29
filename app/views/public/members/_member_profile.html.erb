@@ -19,7 +19,7 @@
         <%= member.name %><br>
         <%= member.introduction %><br>
       </p>
-        <%= link_to "いいねした投稿", member_favorites_path(member.id) %>
+        <%= link_to "いいねした投稿", favorites_member_path(member.id) %>
       <% end %>
       </div>
     </div>
