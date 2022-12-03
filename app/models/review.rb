@@ -25,5 +25,8 @@ class Review < ApplicationRecord
   def self.looks(word)
     @review = Review.where("shop_name LIKE?","%#{word}%").or(Review.where("review_cont LIKE?","%#{word}%").or(Review.where("place LIKE?","%#{word}%")))
   end
+  
+  # def self.comment_score
+  #   @comment_score = 8
 
 end

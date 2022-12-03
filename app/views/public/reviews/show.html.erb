@@ -5,8 +5,6 @@
   <%= image_tag @review.get_image(100,100) %>
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
-        </div>
         <div class="col-10">
           <p class="card-title">
             投稿者: <%= @review.member.name %><br>
@@ -16,6 +14,7 @@
             場所:   <%= @review.place %><br>
             カテゴリ: <%= @review.category.category_name %><br>
             レビュー: <%= @review.review_cont %><br>
+ <span class="sentiment-score">本文の感情分析スコア<%= @review.score %></span><br>
             投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
           </p>
             <% if @review.member == current_member %>

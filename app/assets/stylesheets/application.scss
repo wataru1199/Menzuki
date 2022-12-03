@@ -1,0 +1,57 @@
+
+.main_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card_block {
+  margin-bottom: 50px;
+  display: flex;
+  width: 33%;
+}
+
+.check_box {
+  width: 20%;
+  text-align: center;
+}
+
+#box {
+  height: 24px;
+  line-height: 24px;
+}
+
+.card {
+  width: 80%;
+}
+
+.image {
+  width: 100%;
+}
+
+.contents {
+  width: 100%;
+  display: flex;
+}
+
+.review_infomation {
+  width: 50%;
+}
+
+li{
+ list-style: none;
+}
+
+ul{
+ padding-left: 0;
+}
+
+
+.score {
+  width: 50%;
+}
+
+.item {
+  font-weight: bold;
+}

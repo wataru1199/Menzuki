@@ -28,6 +28,10 @@ class Admin::ReviewsController < ApplicationController
       redirect_to admin_review_path(@review.id)
     end
   end
+  
+  def destroy_select
+    
+  end
 
 
   private
