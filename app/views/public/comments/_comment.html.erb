@@ -6,7 +6,7 @@
     <%= comment.member.name %><br>
     <%= comment.comment_cont %>
   <p>
-    <% if comment.member == current_member %>
+    <% if comment.member == current_member or admin_signed_in? %>
       <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, remote: true %>
     <% end %>
   <% end %>

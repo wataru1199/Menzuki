@@ -29,6 +29,16 @@ class Admin::ReviewsController < ApplicationController
     end
   end
 
+  def destroy_select
+    checked_data = params[:deletes].keys
+    if Review.where(id: checked_data).destroy_all
+      redirect_to admin_reviews_path
+    else
+      @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
+      render action: 'index'
+    end
+  end
+
 
   private
 

@@ -6,47 +6,20 @@
       <div class="index-box border my-2">
          <div class="index-field mr-5">
            　<%= image_tag @member.get_profile_image(100,100) %>
+            <p>
              登録日時:   <%= @member.created_at.strftime('%Y/%m/%d') %><br>
              ユーザ名:   <%= @member.name %><br>
-             紹介文:   <%= @member.introduction %><br>
+             紹介文:   <br><%= @member.introduction %>
+            </p>
             <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
-              <%= f.hidden_field :is_deleted, :value => true %>
-            <div class= "field">
-              <%= f.submit '退会', class:"btn btn-success",  "data-confirm" => "本当に削除しますか?" %>
-            </div>
+                <%= f.hidden_field :is_deleted, :value => true %>
+              <div class= "field">
+                <%= f.submit '退会', class:"btn btn-success",  "data-confirm" => "本当に削除しますか?" %>
+              </div>
             <% end %>
          </div>
        </div>
     </div>
-    <div class= "col-8">
-      <%= @member.name  %>さんの投稿
-      <div class="index-box my-2">
-         <div class="index-field d-flex justify-content-left mr-5">
-          <% @reviews.each do |review| %>
-          <div class= "lists border">
-           <div>
-            <%= image_tag review.get_image(100,100) %>
-           </div>
-           <div>
-            店名:   <%= review.shop_name %>
-            場所:   <%= review.place %>
-            カテゴリ: <%= review.category.category_name %>
-           </div>
-            <%= review.favorites.count %> いいね
-            <p>コメント件数：<%= review.comments.count %></p>
-           <% review.comments.each do |comment| %>
-            <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-             <%= comment.member.name %>
-             <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_cont %>
-             <% if comment.member == current_member %>
-              <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
-             <% end %>
-           <% end %>
-             <%= link_to "削除",admin_review_path(review.id),method: :delete, "data-confirm" => "本当に削除しますか?" %>
-          <% end %>
-         </div>
-       </div>
-      </div>
-    </div>
   </div>
 </div>
+<%= render 'admin/members/review_index', reviews: @reviews, comment: @comment %>

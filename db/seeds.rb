@@ -68,8 +68,11 @@ Category.create!(
       shop_name: "サンプル店",
       place: "鳥取",
       review_cont: "おいしい！",
+      score: Language.get_data(:review_cont),
       )
 review.image.attach(io: File.open(Rails.root.join('app/assets/images/24761383_s.jpg')), filename: '24761383_s.jpg')
+
+
 
  review = Review.create!(
       member_id: "2",
@@ -77,8 +80,10 @@ review.image.attach(io: File.open(Rails.root.join('app/assets/images/24761383_s.
       shop_name: "サンプル店",
       place: "鳥取",
       review_cont: "おいしい！",
+      score: Language.get_data(:review_cont),
       )
 review.image.attach(io: File.open(Rails.root.join('app/assets/images/24908603_m.jpg')), filename: '24908603_m.jpg')
+
 
  review = Review.create!(
       member_id: "3",
@@ -86,8 +91,10 @@ review.image.attach(io: File.open(Rails.root.join('app/assets/images/24908603_m.
       shop_name: "サンプル店",
       place: "東京",
       review_cont: "おいしい！",
+      score: Language.get_data(:review_cont),
       )
 review.image.attach(io: File.open(Rails.root.join('app/assets/images/25006140_s.jpg')), filename: '25006140_s.jpg')
+
 
 
  Admin.create!(

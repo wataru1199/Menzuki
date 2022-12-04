@@ -9,6 +9,8 @@ before_action :authenticate_member!
   def create
     #レビューの新規投稿
     @review= Review.new(review_params)
+    #@reviewに紐づくscoreとして値を格納
+    @review.score = Language.get_data(review_params[:review_cont])
     if @review.save
       redirect_to reviews_path
     else
@@ -42,6 +44,8 @@ before_action :authenticate_member!
   def update
     @review= Review.find(params[:id])
     if @review.update(review_params)
+       score = Language.get_data(review_params[:review_cont])
+       @review.update(score: score)
       redirect_to review_path(@review.id)
     end
   end
