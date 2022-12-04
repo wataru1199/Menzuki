@@ -1,10 +1,11 @@
 <div class= "container">
+  <%= form_with url: admin_reviews_destroy_select_path, method: :delete do |f| %>
   <div class= "main_container">
-    
     <% @reviews.each do |review| %>
       <div class= "card_block">
         <div class= "check_box">
-          <input type="checkbox" checked_value=<% review.id %> name= "deletes[#{ review.id }]" id= "box deletes[#{ review.id }]" , style="transform: scale(2);">
+          <!--<input type="checkbox" value="<%# review.id %>" name="deletes[<#%= review.id %>]" id="deletes<%#= review.id %>"  style="transform: scale(2);">-->
+          <%= f.check_box "deletes[#{review.id}]", {style: "transform: scale(2);"},  true, false %>
         </div>
         <div class= "card">
           <div class= "image">
@@ -36,14 +37,19 @@
                   <span class= "item">レビュー:</span><br>
                   <span><%= review.review_cont %></span>
                 </li>
+                <li>
+                  <span class= "item">投稿スコア:</span><br>
+                  <span><%= review.score %></span>
+                </li>
               </ul>
             </div>
           </div>
-        </div>
+        </div><!-- card end -->
       </div>
-    <% end %>
-  </div>
+    <% end # @reviews.each %>
+  </div><!-- main_container end -->
   <div class= "delete_button">
-
+    <%= f.submit '選択削除' %>
   </div>
+  <% end %>
 </div>

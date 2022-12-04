@@ -1,5 +1,6 @@
 
 .main_container {
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -43,6 +44,10 @@ li{
  list-style: none;
 }
 
+li:last-child{
+ color: red;
+}
+
 ul{
  padding-left: 0;
 }
@@ -54,4 +59,8 @@ ul{
 
 .item {
   font-weight: bold;
+}
+
+.delete_button {
+  width: 10%;
 }
