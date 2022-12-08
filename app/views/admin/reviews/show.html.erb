@@ -20,8 +20,7 @@
       <% end %>
      </p>
      <%= link_to "削除する",admin_review_path(@review.id),method: :delete, "data-confirm" => "本当に削除しますか?" %>
-     <%= link_to "編集する
-     ",edit_admin_review_path(@review.id) %>
-    </div>
-  </div>
+     <%= link_to "編集する",edit_admin_review_path(@review.id) %>
+    </div><!--col_end-->
+  </div><!--row_end-->
 </div>
