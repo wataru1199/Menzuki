@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   #URLにadminを追加し参照をcontroller/adminにする
   namespace :admin do
 
+    get "search" => "reviews#search"
     delete 'reviews/destroy_select' => 'reviews#destroy_select'
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]

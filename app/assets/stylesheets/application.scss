@@ -5,6 +5,7 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .card_block {
@@ -63,4 +64,16 @@ ul{
 
 .delete_button {
   width: 10%;
+}
+
+.search_box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.delete_button {
+  position: fixed;
+  top: 80px;
+  right: 50px;
 }

@@ -3,8 +3,13 @@ class Admin::ReviewsController < ApplicationController
    before_action :authenticate_admin!
 
   def index
-     @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
+     @reviews= Review.all.order(created_at: :desc)
   end
+
+  def search
+      @reviews = Review.scores(params[:review_score]).order(score: :desc)
+  end
+
 
   def destroy
        @review= Review.find(params[:id])
