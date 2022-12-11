@@ -15,21 +15,37 @@
       <%= f.file_field :image, accept: "image/*" %>
       <p>
         <h4>カテゴリ選択</h4><br>
-        <%= f.radio_button :category_id, "1" %>
-        <%= f.label :category_id, "ラーメン", value: 1 %>
-        <%= f.radio_button :category_id, "2" %>
-        <%= f.label :category_id, "つけ麺", value: 2 %>
-        <%= f.radio_button :category_id, "3" %>
-        <%= f.label :category_id, "そば", value: 3 %>
-        <%= f.radio_button :category_id, "4" %>
-        <%= f.label :category_id, "うどん", value: 4 %>
-        <%= f.radio_button :category_id, "5" %>
-        <%= f.label :category_id, "まぜそば", value: 5 %>
-        <%= f.radio_button :category_id, "6" %>
-        <%= f.label :category_id, "パスタ", value: 6 %>
-        <%= f.radio_button :category_id, "7" %>
-        <%= f.label :category_id, "その他", value: 7 %>
-        </p>
+        <div  class = "category_select">
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "1" %>
+            <%= f.label :category_id, "ラーメン", value: 1 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "2" %>
+            <%= f.label :category_id, "つけ麺", value: 2 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "3" %>
+            <%= f.label :category_id, "そば", value: 3 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "4" %>
+            <%= f.label :category_id, "うどん", value: 4 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "5" %>
+            <%= f.label :category_id, "まぜそば", value: 5 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "6" %>
+            <%= f.label :category_id, "パスタ", value: 6 %>
+          </div>
+          <div class = "select_item">
+            <%= f.radio_button :category_id, "7" %>
+            <%= f.label :category_id, "その他", value: 7 %>
+          </div>
+        </div>
+      </p>
         <%= f.hidden_field :member_id, value: current_member.id %>
       <%= f.submit '投稿する' %>
       <% end %>

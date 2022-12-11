@@ -1,12 +1,6 @@
 ---
-ja:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+
+
   date:
     abbr_day_names:
     - 日
@@ -180,29 +174,14 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-
 ja:
   activerecord:
-    attributes:
-      member:
-        name: "氏名"
-        password: "パスワード"
-        password_confirmation: "パスワード確認"
-        email: "メールアドレス"
-
-ja:
-  activerecord:
-    attributes:
-      review:
-        shop_name: "店名"
-        place: "場所"
-        review_cont: "投稿内容"
-
-ja:
-  activerecord:
-    attributes:
-     category:
-        category_name: "カテゴリ名"
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
 
 
 

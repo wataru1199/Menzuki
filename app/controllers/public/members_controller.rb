@@ -4,27 +4,27 @@ before_action :authenticate_member!
 before_action :ensure_guest_user, only: [:edit]
 
   def show
-    @member= Member.find(params[:id])
-    @reviews= Review.all.where(member_id: @member.id)
+    @member = Member.find(params[:id])
+    @reviews = Review.all.where(member_id: @member.id)
     @comment = Comment.new
   end
 
   def edit
-    @member= Member.find(params[:id])
+    @member = Member.find(params[:id])
   end
 
   def update
-    @member= Member.find(params[:id])
+    @member = Member.find(params[:id])
     if @member.update(member_params)
       redirect_to member_path(@member.id)
     else
       render :edit
-      @member= specific_member
+      @member = specific_member
     end
   end
 
   def status
-    @member= Member.find(params[:id])
+    @member = Member.find(params[:id])
     @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

@@ -9,7 +9,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2">
-        </div>
+        </div><!--col_2-->
         <div class="col-10">
          <p class="card-title">
            <span>投稿者: <%= link_to review.member.name, member_path(review.member.id) %></span>
@@ -26,9 +26,9 @@
          <p >
            <%= render 'public/comments/comment', review: review, comment: @comment  %>
          </p>
-        </div>
+        </div><!--col_10-->
       </div>
     </div>
-  </div>
+  </div><!--card-->
   <% end %>
 </div>

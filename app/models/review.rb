@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  belongs_to :category
+  belongs_to :category, optional: true
   belongs_to :member
   has_many :favorited_members, through: :favorites, source: :member
 
@@ -9,6 +9,8 @@ class Review < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :place, presence: true
+  validates :category, presence: true
+
 
   def get_image(width, height)
     unless image.attached?

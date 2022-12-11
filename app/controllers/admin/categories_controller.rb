@@ -8,8 +8,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @categories= Category.all
-    @category= Category.new(category_params)
+    @categories = Category.all
+    @category = Category.new(category_params)
      @category.save
     #   redirect_to action: "index"
     # else
@@ -18,11 +18,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @category= specific_category
+    @category = Category.find(params[:id])
   end
 
   def update
-    @category= Category.find(params[:id])
+    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to action: "index"
     else
@@ -32,9 +32,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-       @category= Category.find(params[:id])
+       @category = Category.find(params[:id])
     if @category.destroy
-       @categories= Category.all.page(params[:page]).per(4)
+       @categories = Category.all.page(params[:page]).per(4)
        redirect_to action: "index"
     end
   end

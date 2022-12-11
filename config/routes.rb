@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
     get "search" => "reviews#search"
     delete 'reviews/destroy_select' => 'reviews#destroy_select'
+    delete 'reviews/destroy_all' => 'reviews#destroy_all'
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :new, :create, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy] do

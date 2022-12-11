@@ -20,12 +20,12 @@ before_action :authenticate_member!
   end
 
   def index
-    @reviews= Review.all.order(created_at: :desc).page(params[:page]).per(4)
+    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(4)
     @comment = Comment.new
   end
 
   def show
-    @review= Review.find(params[:id])
+    @review = Review.find(params[:id])
     @comment = Comment.new
   end
 
@@ -37,11 +37,11 @@ before_action :authenticate_member!
   end
 
   def edit
-    @review= Review.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def update
-    @review= Review.find(params[:id])
+    @review = Review.find(params[:id])
     if @review.update(review_params)
        score = Language.get_data(review_params[:review_cont])
        @review.update(score: score)
