@@ -18,13 +18,22 @@
            <span>店名:   <%= link_to review.shop_name, review_path(review.id) %></span><br>
            <span>場所:   <%= review.place %><br>
            <span>カテゴリ: <%= review.category.category_name %></span><br>
-           <span id= "favorites">
-           <%= render 'public/favorites/favorite', review: review %>
+           <span id= "favorites_<%= review.id %>">
+             <%= render 'public/favorites/favorite', review: review %>
            </span><br>
-           <span>コメント<%= review.comments.count %>件</span>
+           <span id= "comment_count_<%= review.id %>">
+              コメント<%= review.comments.count %>件
+           </span>
          </p>
-         <p >
-           <%= render 'public/comments/comment', review: review, comment: @comment  %>
+         <p>
+           <span id= "comments_<%= review.id %>">
+              <%= render 'public/comments/comment', review: review, comment: @comment %>
+           </span>
+         </p>
+         <p>
+          <span id= "comment_form">
+           <%= render 'public/comments/form', review: review, comment: @comment %>
+          </span>
          </p>
         </div><!--col_10-->
       </div>
