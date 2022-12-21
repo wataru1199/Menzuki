@@ -1,7 +1,7 @@
 <div class= "search_box">
   <%= form_with url: admin_search_path, method: :get do |f| %>
     <%= f.number_field :review_score, step: '0.1', required: true %>
-    <%= f.submit "数値で絞り込む", class: "btn btn-primary" %>
+    <%= f.submit "数値以下で絞り込む", class: "btn btn-primary" %>
   <% end %>
 </div>
 <div class= "container">
