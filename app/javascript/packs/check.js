@@ -1,6 +1,6 @@
 /* global $*/
 
-  $(function() {
+document.addEventListener("turbolinks:load", function(){
     // <!--// 1. 「全選択」する-->
     $('#all').on('click', function() {
       $("input[name^=deletes").prop('checked', this.checked);
