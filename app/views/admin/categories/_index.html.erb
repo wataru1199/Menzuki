@@ -14,18 +14,24 @@
            <div class="index-field d-flex justify-content-left mr-5">
              <div>
                <tr>
-                <th><%= category.category_name %></th>
-                <td><%= link_to "編集",edit_admin_category_path(category.id) %></td>
+                <th>
+                    <%= category.category_name %>
+                </th>
+                <td>
+                    <%= link_to "編集",edit_admin_category_path(category.id) %>
+                </td>
                 <td>
                   <% if category.reviews.count == 0 %>
                   <%= link_to "削除",admin_category_path(category.id), method: :delete, remote: true %>
                   <% end %>
                 </td>
-                <td><%= category.reviews.count %></td>
+                <td>
+                    <%= category.reviews.count %>
+                </td>
                </tr>
              </div>
-           </div>
-         </div>
+           </div><!-- index-field end -->
+         </div><!-- index-box end -->
        <% end %>
     </tbody>
    </table>

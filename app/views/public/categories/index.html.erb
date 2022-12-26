@@ -1,7 +1,7 @@
 <%= render 'layouts/validates', som: @comment %>
 <div class="card-list-container py-5 ">
   <div class = "text-center">
-  <h4>"<%= @category.category_name %>"カテゴリの投稿一覧</h4>
+    <h4>"<%= @category.category_name %>"カテゴリの投稿一覧</h4>
   </div>
   <% @category.reviews.each do |review| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
@@ -36,8 +36,8 @@
           </span>
          </p>
         </div><!--col_10-->
-      </div>
-    </div>
+      </div><!-- row end -->
+    </div><!-- card-body end -->
   </div><!--card-->
   <% end %>
 </div>
