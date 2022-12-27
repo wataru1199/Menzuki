@@ -25,14 +25,14 @@ class Review < ApplicationRecord
   end
 
   def self.looks(word)
-    @review = Review.where("shop_name LIKE?","%#{word}%").or(Review.where("review_cont LIKE?","%#{word}%").or(Review.where("place LIKE?","%#{word}%")))
+    where("shop_name LIKE?","%#{word}%").or(Review.where("review_cont LIKE?","%#{word}%").or(Review.where("place LIKE?","%#{word}%")))
   end
 
   def self.scores(review_score)
     if review_score.to_f <= 1 && review_score.to_f >= -1
-      @reviews = Review.where(score: .. review_score.to_f)
+      where(score: .. review_score.to_f)
     else
-      @reviews = Review.all
+      all
     end
   end
 

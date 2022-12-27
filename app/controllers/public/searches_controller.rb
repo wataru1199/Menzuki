@@ -5,8 +5,7 @@ class Public::SearchesController < ApplicationController
      @comment = Comment.new
      @reviews = Review.looks(search_params).page(params[:page]).per(4)
   end
-
-
+  
  private
 
   def search_params

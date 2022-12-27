@@ -7,9 +7,7 @@ before_action :authenticate_member!
   end
 
   def create
-    #レビューの新規投稿
     @review = Review.new(review_params)
-    #@reviewに紐づくscoreとして値を格納
     @review.score = Language.get_data(review_params[:review_cont])
     if @review.save
       redirect_to reviews_path
@@ -49,12 +47,10 @@ before_action :authenticate_member!
     end
   end
 
-
   private
 
   def review_params
    params.require(:review).permit(:shop_name, :place, :review_cont, :category_id, :image, :member_id)
   end
-
 
 end

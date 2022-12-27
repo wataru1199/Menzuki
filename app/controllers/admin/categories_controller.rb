@@ -9,12 +9,8 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @categories = Category.all
-    @category = Category.new(category_params)
-     @category.save
-    #   redirect_to action: "index"
-    # else
-    #   render action: "index"
-    # end
+     category = Category.new(category_params)
+     category.save
   end
 
   def edit
@@ -32,8 +28,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-       @category = Category.find(params[:id])
-    if @category.destroy
+       category = Category.find(params[:id])
+    if category.destroy
        @categories = Category.all.page(params[:page]).per(4)
        redirect_to action: "index"
     end
