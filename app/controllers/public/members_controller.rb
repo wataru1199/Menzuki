@@ -51,7 +51,5 @@ before_action :ensure_guest_user, only: [:edit]
     end
   end
 
-
-
 end
 

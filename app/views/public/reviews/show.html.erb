@@ -14,7 +14,7 @@
             場所:   <%= @review.place %><br>
             カテゴリ: <%= @review.category.category_name %><br>
             レビュー: <%= @review.review_cont %><br>
- <span class="sentiment-score">本文の感情分析スコア<%= @review.score %></span><br>
+            <span class="sentiment-score">本文の感情分析スコア<%= @review.score %></span><br>
             投稿日時: <%= @review.created_at.strftime('%Y/%m/%d') %><br>
           </p>
             <% if @review.member == current_member %>
@@ -38,7 +38,6 @@
            <%= render 'public/comments/form', review: @review, comment: @comment %>
           </span>
        </p>
-
         </div>
       </div>
     </div>
