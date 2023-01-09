@@ -5,49 +5,27 @@
     <div class= "col">
       <h1>投稿フォーム</h1>
       <%= form_with model: @review, url:  reviews_path, method: :post do |f| %>
-      <h4>店名</h4>
-      <%= f.text_field :shop_name %>
-      <h4>場所</h4>
-      <%= f.text_field :place %>
-      <h4>感想</h4>
-      <%= f.text_area :review_cont %>
-      <h4>写真</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-      <p>
-        <h4>カテゴリ選択</h4><br>
-        <div  class = "category_select">
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "1" %>
-            <%= f.label :category_id, "ラーメン", value: 1 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "2" %>
-            <%= f.label :category_id, "つけ麺", value: 2 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "3" %>
-            <%= f.label :category_id, "そば", value: 3 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "4" %>
-            <%= f.label :category_id, "うどん", value: 4 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "5" %>
-            <%= f.label :category_id, "まぜそば", value: 5 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "6" %>
-            <%= f.label :category_id, "パスタ", value: 6 %>
-          </div>
-          <div class = "select_item">
-            <%= f.radio_button :category_id, "7" %>
-            <%= f.label :category_id, "その他", value: 7 %>
-          </div>
+        <h4>店名</h4>
+        <%= f.text_field :shop_name %>
+        <h4>場所</h4>
+        <%= f.text_field :place %>
+        <h4>感想</h4>
+        <%= f.text_area :review_cont %>
+        <h4>写真</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+        <p>
+          <h4>カテゴリ選択</h4><br>
+        <div class = "category_select">
+          <% @categories.each do |category| %>
+            <div class = "select_item">
+              <%= f.radio_button :category_id, category.id %>
+              <%= f.label :category_id, category.category_name, value: category.id %>
+            </div>
+          <% end %>
         </div>
-      </p>
+        </p>
         <%= f.hidden_field :member_id, value: current_member.id %>
-      <%= f.submit '投稿する' %>
+        <%= f.submit '投稿する' %>
       <% end %>
     </div>
   </div>
