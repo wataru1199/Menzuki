@@ -3,6 +3,7 @@ class Public::ReviewsController < ApplicationController
 before_action :authenticate_member!
 
   def new
+    @categories = Category.all.order("order_number")
     @review= Review.new
   end
 
